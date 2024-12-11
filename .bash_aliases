@@ -39,3 +39,5 @@ mdtopdf () {
 
 # for backing up dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias cal='ncal -C'

@@ -52,7 +52,7 @@ vim.opt.updatetime = 50
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -68,5 +68,10 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.g.netrw_liststyle = 3
+vim.keymap.set('n', '<M-h>', '<C-w>h')
+vim.keymap.set('n', '<M-j>', '<C-w>j')
+vim.keymap.set('n', '<M-k>', '<C-w>k')
+vim.keymap.set('n', '<M-l>', '<C-w>l')
+
+vim.g.netrw_liststyle = 0
 vim.g.netrw_banner = 0
