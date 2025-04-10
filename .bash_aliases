@@ -25,6 +25,7 @@ alias nv='nvim'
 alias sm='${HOME}/CS/CLI_Commands/Screen_Modes/screenmode'
 alias schd="${HOME}/CS/CLI_Commands/Schedule/schedule.sh"
 alias monitor="${HOME}/CS/CLI_Commands/monitor_on_off/monitor"
+alias ocrsh="${HOME}/CS/CLI_Commands/Screenshot/screenst"
 
 alias sus="systemctl suspend"
 
