@@ -1,11 +1,13 @@
 [colors]
-background = #242933
-background-alt = #373B41
-foreground = #C9CFDA
-primary = #89C1D1
+background = #2A313E
+background-alt = #414B5E
+foreground = #D9DFEA
+primary = #7F9FBE
+alert = #B65E67
+disabled = #414B5E
+
+# not used
 secondary = #8ABEB7
-alert = #991e2c
-disabled = #58647D
 
 [bar/bar1]
 width = 100%
@@ -27,8 +29,8 @@ separator-foreground = ${colors.disabled}
 
 font-0 = ProggyCleanNerdFont:size=16;2
 
-modules-left = xworkspaces xwindow
-modules-right = wlan eth filesystem pulseaudio memory cpu battery date
+modules-left = xworkspaces
+modules-right = wlan pulseaudio memory cpu battery date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -43,9 +45,10 @@ full-at = 85
 low-at = 10
 battery = BAT0
 poll-interval = 5
-label-charging = %{F#89C1D1}CHARGING %{F-}%percentage%%
+label-charging = %{F#89C1D1}CHRG-N %{F-}%percentage%%
 time-format = %H:%M
 label-discharging = %{F#89C1D1}BAT %{F-}%percentage%% %time%
+label-full = %{F#89C1D1}FULL CHRG
 
 [module/systray]
 type = internal/tray
@@ -114,7 +117,7 @@ label-disconnected = %{F#89C1D1}%ifname%%{F#A05660} disconnected
 inherit = network-base
 interface-type = wireless
 interface = wlp3s0
-label-connected = %{F#89C1D1}%ifname%%{F-} %essid% %local_ip%
+label-connected = %{F#89C1D1}WIFI %{F-}%essid% %local_ip%
 
 [module/eth]
 inherit = network-base
