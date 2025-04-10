@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- this is supposed to stop me from using Q--if it did anything
-vim.keymap.set("n", "Q", "<nop>")
+--vim.keymap.set("n", "Q", "<nop>")
 
 -- hethenism
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -45,10 +45,9 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- moving between windows
-vim.keymap.set("n", "<leader>h", "<C-w>h")
-vim.keymap.set("n", "<leader>j", "<C-w>j")
-vim.keymap.set("n", "<leader>k", "<C-w>k")
-vim.keymap.set("n", "<leader>l", "<C-w>l")
+--vim.keymap.set("n", "<leader>h", "<C-w>h")
+--vim.keymap.set("n", "<leader>j", "<C-w>j")
+--vim.keymap.set("n", "<leader>k", "<C-w>k")
+--vim.keymap.set("n", "<leader>l", "<C-w>l")
 
 --false vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
--- vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
