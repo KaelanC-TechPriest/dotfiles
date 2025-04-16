@@ -60,19 +60,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    # ls -GFhA
-    alias ls='ls -FhA --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -107,7 +94,7 @@ fi
 set -o noclobber
 
 export PATH=$PATH:/snap/bin:/home/k9/.local/bin
-#export LC_ALL='C'
+export LC_ALL='C'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
 
