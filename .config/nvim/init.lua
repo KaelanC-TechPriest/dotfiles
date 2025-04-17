@@ -1,1 +1,1 @@
-require("k9")
+require("config.lazy")
