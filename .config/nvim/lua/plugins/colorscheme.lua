@@ -1,11 +1,14 @@
 return {
 	{
+		"EdenEast/nightfox.nvim",
+	},
+	{
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
-			--vim.cmd([[colorscheme tokyonight-night]])
+			vim.cmd([[colorscheme tokyonight-night]])
 		end,
 	},
 	{
@@ -18,13 +21,13 @@ return {
 				variant = "default", -- use "light" for the light variant. Also accepts "auto" to set dark or light colors based on the current value of `vim.o.background`
 
 				-- Reduce the overall saturation of colours for a more muted look
-				saturation = 0.5, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
+				saturation = 1, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
 
 				-- Enable italics comments
 				italic_comments = true,
 
 				-- Replace all fillchars with ' ' for the ultimate clean look
-				hide_fillchars = true,
+				hide_fillchars = false,
 
 				-- Apply a modern borderless look to pickers like Telescope, Snacks Picker & Fzf-Lua
 				borderless_pickers = false,
@@ -40,7 +43,7 @@ return {
 					telescope = true,
 				},
 			})
-			vim.cmd([[colorscheme cyberdream]])
+			--vim.cmd([[colorscheme cyberdream]])
 		end,
 	},
 	{
