@@ -54,3 +54,7 @@ mdtopdf () {
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias cal='ncal -C'
+
+# Neorg
+alias ngp='cd ~/personal/ && nvim -c "Neorg workspace personal"'
+alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'

@@ -94,7 +94,7 @@ fi
 set -o noclobber
 
 export PATH=$PATH:/snap/bin:/home/k9/.local/bin
-export LC_ALL='C'
+export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
 
