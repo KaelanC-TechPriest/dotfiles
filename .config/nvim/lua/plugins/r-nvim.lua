@@ -11,6 +11,7 @@ return {
 		-- Create a table with the options to be passed to setup()
 		---@type RConfigUserOpts
 		local opts = {
+			--user_maps_only = true,
 			hook = {
 				on_filetype = function()
 					vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
@@ -18,6 +19,7 @@ return {
 				end,
 			},
 			R_args = { "--quiet", "--no-save" },
+			editing_mode = "vi",
 			min_editor_width = 72,
 			rconsole_width = 78,
 			objbr_mappings = { -- Object browser keymap
@@ -33,6 +35,7 @@ return {
 				"RCustomStart",
 				"RSPlot",
 				"RSaveClose",
+				"RInsertPipe",
 			},
 		}
 		-- Check if the environment variable "R_AUTO_START" exists.
