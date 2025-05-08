@@ -21,7 +21,7 @@ vim.o.smartcase = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false -- replace tabs with spaces
+vim.opt.expandtab = true -- replace tabs with spaces
 vim.opt.smartindent = true
 
 -- wrap lines
@@ -118,5 +118,19 @@ end
 vim.opt.foldtext = "v:lua.custom_fold_text()"
 --
 -- thank you (https://youtu.be/f_f08KnAJOQ?si=80GBuGrzvmsGMTqo)
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+--vim.opt.foldmethod = "expr"
+--vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+--vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+vim.api.nvim_create_user_command("Cmpoff", function(opts)
+	require("cmp").setup({ enabled = false })
+end, { nargs = "*", desc = "Turn completion off" })
+
+vim.api.nvim_create_user_command("Cmpon", function(opts)
+	require("cmp").setup({ enabled = true })
+end, { nargs = "*", desc = "Turn completion off" })
+
+-- align table
+vim.api.nvim_create_user_command("FormatTable", function(opts)
+	vim.cmd(string.format('%d,%d!column -t -s "|" -o "|" ', opts.line1, opts.line2))
+end, { range = true, desc = "Format a visualy selected table" })
