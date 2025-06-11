@@ -93,7 +93,7 @@ fi
 # Establish a safe environment
 set -o noclobber
 
-export PATH=$PATH:/snap/bin:/home/k9/.local/bin
+export PATH=$PATH:/home/k9/.local/bin:/opt/nvim-linux-x86_64/bin
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
@@ -157,8 +157,8 @@ spf() {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/engineseer/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
+#__conda_setup="$('/home/engineseer/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" # https://github.com/ContinuumIO/anaconda-issues/issues/10173
+if [ 1 -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/home/engineseer/miniconda3/etc/profile.d/conda.sh" ]; then

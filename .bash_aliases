@@ -30,7 +30,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias ln='ln -i'
 
-alias nvim='${HOME}/AppImages/nvim.appimage'
+# alias nvim='${HOME}/AppImages/nvim.appimage'
 alias nv='nvim'
 
 # CLI Commands
