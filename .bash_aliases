@@ -16,7 +16,8 @@ alias l='ls -C'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#Sat Jun 21 11:42:03 AM MDT 2025
+# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # make cd run ls
 function cd () {
@@ -30,16 +31,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias ln='ln -i'
 
-# alias nvim='${HOME}/AppImages/nvim.appimage'
 alias nv='nvim'
 
-# CLI Commands
-alias sm='${HOME}/CS/CLI_Commands/Screen_Modes/screenmode'
-alias schd="${HOME}/CS/CLI_Commands/Schedule/schedule.sh"
-alias monitor="${HOME}/CS/CLI_Commands/monitor_on_off/monitor"
-alias ocrsh="${HOME}/CS/CLI_Commands/Screenshot/screenst"
-
-alias sus="systemctl suspend"
+alias ocrsh="${HOME}/personal/cs/cool-one-shots/Screenshot/screenst"
 
 alias tmux="tmux -u"
 
@@ -56,5 +50,8 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cal='ncal -C'
 
 # Neorg
-alias ngp='cd ~/personal/ && nvim -c "Neorg workspace personal"'
+alias ngp='cd ~/personal/notes/ && nvim -c "Neorg workspace personal"'
 alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'
+
+# tmux
+alias tmux-sessions="${HOME}/.config/tmux/tmux-sessions"

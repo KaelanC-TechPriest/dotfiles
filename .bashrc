@@ -154,6 +154,7 @@ spf() {
     }
 }
 
+XDG_CONFIG_HOME="$HOME/.config/"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -172,3 +173,6 @@ unset __conda_setup
 
 eval "$(starship init bash)"
 . "$HOME/.cargo/env"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

@@ -10,11 +10,10 @@ return {
 				["core.dirman"] = {
 					config = {
 						workspaces = {
-							notes = "~/notes",
-							personal = "~/personal",
+							personal = "~/personal/notes",
 							school = "~/school",
 						},
-						default_workspace = "notes",
+						default_workspace = "personal",
 						vim.keymap.set("n", "<LocalLeader>nn", "<Plug>(neorg.dirman.new-note)"),
 					},
 				},
