@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-# Yes, I did just rip the code for theprimeagen's tmux sessionizer.
-
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/school ~/school/* ~/personal ~/personal/cs -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/school/* ~/personal ~/personal/cs ~/.config/tmux ~/.config/nvim ~/.config/kitty -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -17,19 +15,17 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     if [[ "$selected" = "/home/engineseer/personal/notes" || "$selected" = "~/personal/notes" ]]; then
-        tmux new-session -s "$selected_name" -c "$selected" \; send-keys 'nvim -c "Neorg workspace personal"' C-m
+        tmux new-session -s $selected_name -c $selected \; send-keys 'nvim -c "Neorg workspace personal"' C-m
     else
-        tmux new-session -s "$selected_name" -c "$selected"
-    fi
-fi
-
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    if [[ "$selected" = "/home/engineseer/personal/notes" || "$selected" = "~/personal/notes" ]]; then
-        tmux new-session -ds "$selected_name" -c "$selected" \; send-keys 'nvim -c "Neorg workspace personal"' C-m
-    else
-        tmux new-session -ds $selected_name -c $selected
+        tmux new-session -s $selected_name -c $selected
     fi
     exit 0
+elif ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    if [[ "$selected" = "/home/engineseer/personal/notes" || "$selected" = "~/personal/notes" ]]; then
+        tmux new-session -ds "$selected_name" -c "$selected" \; send-keys -t "$selected_name" 'nvim -c "Neorg workspace personal"' C-m
+    else
+        tmux new-session -ds $selected_name -c $selected \; send-keys 'hello'
+    fi
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
