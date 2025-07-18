@@ -1,0 +1,98 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+    // Choose the order of the modules
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+    ],
+
+    "hyprland/workspaces": {
+        "format": "<span size='larger'>{icon}</span>",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "\uf444",
+            "default": "\uf4c3"
+        },
+        "icon-size": 10,
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        },
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pipewire"
+    },
+
+    "network": {
+        "format-wifi": "   {essid} ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": ""
+
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": "  {}%",
+        "tooltip": true
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time}  {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "{:%H:%M %e/%m}",
+        "tooltip-format": "<big>{calendar}</big>",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}
