@@ -134,3 +134,10 @@ end, { nargs = "*", desc = "Turn completion off" })
 vim.api.nvim_create_user_command("FormatTable", function(opts)
 	vim.cmd(string.format('%d,%d!column -t -s "|" -o "|" ', opts.line1, opts.line2))
 end, { range = true, desc = "Format a visualy selected table" })
+
+vim.o.termguicolors = true
+vim.cmd [[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+]]
