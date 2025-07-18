@@ -54,4 +54,4 @@ alias ngp='cd ~/personal/notes/ && nvim -c "Neorg workspace personal"'
 alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'
 
 # tmux
-alias tmux-sessions="${HOME}/.config/tmux/tmux-sessions"
+alias sessions-tmux="${HOME}/.config/tmux/sessions-tmux"
