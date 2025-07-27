@@ -93,7 +93,7 @@ fi
 # Establish a safe environment
 set -o noclobber
 
-export PATH=$PATH:/home/k9/.local/bin:/opt/nvim-linux-x86_64/bin
+export PATH=$PATH:/home/engineseer/.local/bin:/home/engineseer/go/bin
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
@@ -104,17 +104,6 @@ export CLASSPATH=/usr/local/bin/algs4.jar:$CLASSPATH
 
 # go
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# screen saver
-#xset +dpms
-#xset dpms 900 1200 1500
-#xset s 900 1200
-
-export TMPDIR="$HOME/tmp/selenium"
 
 # If there are multiple matches for completion, Tab should cycle through them and Shift-Tab should cycle backwards
 bind 'TAB:menu-complete'
@@ -135,38 +124,10 @@ bind '"\e[B":history-search-forward'
 bind '"\e[1;5C":forward-word'
 bind '"\e[1;5D":backward-word'
 
-# spf stay in file after closing
-spf() {
-    os=$(uname -s)
-
-    # Linux
-    if [[ "$os" == "Linux" ]]; then
-        export SPF_LAST_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/superfile/lastdir"
-    fi
-
-    command spf "$@"
-
-    [ ! -f "$SPF_LAST_DIR" ] || {
-        . "$SPF_LAST_DIR"
-        rm -f -- "$SPF_LAST_DIR" > /dev/null
-    }
-}
-
 XDG_CONFIG_HOME="$HOME/.config/"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/engineseer/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" # https://github.com/ContinuumIO/anaconda-issues/issues/10173
-if [ 1 -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/engineseer/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/engineseer/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/engineseer/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 eval "$(starship init bash)"
+
+export NVM_DIR="$HOME/.config//nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
