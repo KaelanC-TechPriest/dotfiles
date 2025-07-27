@@ -58,7 +58,7 @@
     },
 
     "network": {
-        "format-wifi": "   {essid} ({signalStrength}%)",
+        "format-wifi": "  {essid} ({signalStrength}%)",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -68,12 +68,12 @@
     },
 
     "cpu": {
-        "format": "  {usage}%",
+        "format": " {usage}%",
         "tooltip": true
     },
 
     "memory": {
-        "format": "  {}%",
+        "format": " {}%",
         "tooltip": true
     },
 
@@ -82,10 +82,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
+        "format": "{icon}  {capacity}% ({time})",
+        "format-time": "{H}:{m}",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}% ({time})",
+        "format-plugged": " {capacity}%",
         "format-alt": "{time}  {icon}",
         "format-icons": ["", "", "", "", ""]
     },
