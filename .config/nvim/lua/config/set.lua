@@ -63,6 +63,7 @@ vim.g.netrw_liststyle = 0
 vim.g.netrw_banner = 0
 
 vim.o.linebreak = true
+vim.o.formatoptions = "cqjrl"
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -107,16 +108,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-function _G.custom_fold_text()
-	local line = vim.fn.getline(vim.v.foldstart)
-
-	local line_count = vim.v.foldend - vim.v.foldstart + 1
-
-	return line .. " | " .. line_count .. " lines"
-end
-
-vim.opt.foldtext = "v:lua.custom_fold_text()"
---
 -- thank you (https://youtu.be/f_f08KnAJOQ?si=80GBuGrzvmsGMTqo)
 --vim.opt.foldmethod = "expr"
 --vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -141,3 +132,11 @@ vim.cmd [[
   highlight NonText guibg=NONE ctermbg=NONE
   highlight EndOfBuffer guibg=NONE ctermbg=NONE
 ]]
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "norg,typst",
+  callback = function()
+        vim.o.formatoptions = "ctqjr"
+        vim.o.textwidth = 80
+  end,
+})
