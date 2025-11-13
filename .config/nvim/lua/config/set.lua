@@ -63,7 +63,7 @@ vim.g.netrw_liststyle = 0
 vim.g.netrw_banner = 0
 
 vim.o.linebreak = true
-vim.o.formatoptions = "cqjrl"
+vim.o.formatoptions = "cjlq"
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -134,9 +134,9 @@ vim.cmd [[
 ]]
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "norg,typst",
+  pattern = "norg,typst,latex,tex",
   callback = function()
-        vim.o.formatoptions = "ctqjr"
+        vim.o.formatoptions = "cjqt"
         vim.o.textwidth = 80
   end,
 })
