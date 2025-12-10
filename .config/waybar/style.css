@@ -17,8 +17,8 @@ window#waybar {
 .modules-right
 {
     margin: 4 4 0 4px;
-    background: rgba(0, 0, 8, 1);
-    border-radius: 2px;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 3px;
 }
 .modules-left {
     padding: 0;
@@ -74,14 +74,18 @@ window#waybar {
 #workspaces button {
   background: transparent;
   font-family: JetBrainsMonoNerdFont;
-  font-weight: 900;
-  font-size: 13pt;
   color: #cccccc;
   padding-right: 0.5em;
+  border-radius: 3px;
 }
 
 #workspaces button:hover {
   background: #222222;
   color: #222222;
   box-shadow: none;
+}
+
+#workspaces button.active {
+  background: #aaaaaa;
+  color: #000000;
 }
