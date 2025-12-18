@@ -1,16 +1,15 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "height": 24,
     "spacing": 5, // Gaps between modules (4px)
-    // Choose the order of the modules
 
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "mpris",
     ],
     "modules-center": [
-        "clock"
+        "clock",
     ],
     "modules-right": [
         "pulseaudio",
@@ -24,11 +23,6 @@
     "hyprland/workspaces": {
         "format": " {name}",
         "on-click": "activate",
-        "format-icons": {
-            "active": "",
-            "default": ""
-        },
-        "icon-size": 10,
         "sort-by-number": true,
         "persistent-workspaces": {
             "1": [],
@@ -37,20 +31,30 @@
         },
     },
 
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "max-length": 40,
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+    },
+
     "pulseaudio": {
-        "format": "{icon}  {volume}% {format_source}",
+        "format": "{icon}  {volume}% {format_source} ",
         "format-bluetooth": "{icon} {volume}%  {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source} ",
+        "format-muted": " {format_source} ",
         "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
             "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pipewire"
@@ -59,11 +63,9 @@
     "network": {
         "format-wifi": "  {essid} ({signalStrength}%)",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click": ""
-
     },
 
     "cpu": {
@@ -77,22 +79,37 @@
     },
 
     "battery": {
+        "interval": 60,
         "states": {
             "warning": 30,
             "critical": 15
         },
+        "events": {
+            "on-discharging-warning": "notify-send -u normal 'Battery Low'",
+            "on-discharging-critical": "notify-send -u critical 'Battery Critical'",
+        },
         "format": "{icon} {capacity}%",
         "format-time": "{H}:{m}",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{icon}  ",
         "format-icons": ["", "", "", "", ""]
     },
 
     "clock": {
-        "format": "{:%H:%M %e/%m}",
+        "interval": 60,
+        "format": "{:%H:%M  %Y.%m.%d}",
+        "format-alt": "{:%A, %B %d, %Y (%R)}",
         "tooltip-format": "<big>{calendar}</big>",
-        "format-alt": "{:%Y-%m-%d}"
-    }
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+    },
 }

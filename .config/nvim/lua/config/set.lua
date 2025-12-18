@@ -39,7 +39,7 @@ vim.opt.incsearch = true
 
 -- colors
 vim.opt.termguicolors = true
-vim.o.background = "dark"
+-- vim.o.background = "dark"
 
 -- keeps 8 lines above and below cursor
 vim.opt.scrolloff = 10
