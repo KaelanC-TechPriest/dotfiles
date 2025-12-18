@@ -14,14 +14,14 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    if [[ "$selected" = "/home/engineseer/personal/notes" || "$selected" = "~/personal/notes" ]]; then
+    if [[ "$selected" = "$HOME/personal/notes" || "$selected" = "~/personal/notes" ]]; then
         tmux new-session -s $selected_name -c $selected \; send-keys 'nvim -c "Neorg workspace personal"' C-m
     else
         tmux new-session -s $selected_name -c $selected
     fi
     exit 0
 elif ! tmux has-session -t="$selected_name" 2> /dev/null; then
-    if [[ "$selected" = "/home/engineseer/personal/notes" || "$selected" = "~/personal/notes" ]]; then
+    if [[ "$selected" = "$HOME/personal/notes" || "$selected" = "~/personal/notes" ]]; then
         tmux new-session -ds "$selected_name" -c "$selected" \; send-keys -t "$selected_name" 'nvim -c "Neorg workspace personal"' C-m
     else
         tmux new-session -ds $selected_name -c $selected \; send-keys 'hello'
