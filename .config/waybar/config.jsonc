@@ -2,21 +2,24 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 24,
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 10, // Gaps between modules (4px)
 
     "modules-left": [
         "hyprland/workspaces",
-        "mpris",
+        "mpris"
     ],
+
     "modules-center": [
-        "clock",
+        "clock"
     ],
+
     "modules-right": [
+        "tray",
         "pulseaudio",
         "network",
         "cpu",
         "memory",
-        "battery",
+        "battery"
     ],
 
 
@@ -27,13 +30,13 @@
         "persistent-workspaces": {
             "1": [],
             "2": [],
-            "3": [],
-        },
+            "3": []
+        }
     },
 
     "mpris": {
-        "format": "{player_icon} {dynamic}",
-        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "format": "{player_icon} {title} - {artist}",
+        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
         "max-length": 40,
         "player-icons": {
             "default": "▶",
@@ -41,11 +44,11 @@
         },
         "status-icons": {
             "paused": "⏸"
-        },
+        }
     },
 
     "pulseaudio": {
-        "format": "{icon}  {volume}% {format_source} ",
+        "format": "{icon} {volume}% {format_source} ",
         "format-bluetooth": "{icon} {volume}%  {format_source}",
         "format-bluetooth-muted": " {icon} {format_source} ",
         "format-muted": " {format_source} ",
@@ -65,7 +68,7 @@
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Disconnected ⚠"
     },
 
     "cpu": {
@@ -85,8 +88,8 @@
             "critical": 15
         },
         "events": {
-            "on-discharging-warning": "notify-send -u normal 'Battery Low'",
-            "on-discharging-critical": "notify-send -u critical 'Battery Critical'",
+            "on-discharging-warning": "dunstify --app-name=Battery -u normal 'LOW'",
+            "on-discharging-critical": "dunstify --app-name=Battery -u critical '!CRITICAL!'"
         },
         "format": "{icon} {capacity}%",
         "format-time": "{H}:{m}",
@@ -97,8 +100,8 @@
 
     "clock": {
         "interval": 60,
-        "format": "{:%H:%M  %Y.%m.%d}",
-        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "format": "{:%A %R}",
+        "format-alt": "{:%m.%d.%H%M}",
         "tooltip-format": "<big>{calendar}</big>",
         "calendar": {
             "mode"          : "month",
@@ -110,6 +113,11 @@
                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-        },
+        }
     },
+
+    "tray": {
+      "icon-size": 20,
+      "spacing": 10
+    }
 }
