@@ -17,7 +17,7 @@ alias l='ls -C'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 #Sat Jun 21 11:42:03 AM MDT 2025
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # make cd run ls
 function cd () {
@@ -55,3 +55,17 @@ alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'
 
 # tmux
 alias sessions-tmux="${HOME}/.config/tmux/sessions-tmux"
+
+# work motivator
+stopwatch() {
+    local rate_per_hour=15
+    local start=$(date +%s)
+    while true; do
+        local now=$(date +%s)
+        local elapsed_seconds=$(( now - start ))
+        local time_formatted=$(date -u -d "@$elapsed_seconds" +%H:%M:%S)
+        local money=$(awk "BEGIN {printf \"%.4f\", $elapsed_seconds * $rate_per_hour / 3600}")
+        printf '\rElapsed: %s | Earned: $%.2f' "$time_formatted" "$money"
+        sleep 1
+    done
+}
