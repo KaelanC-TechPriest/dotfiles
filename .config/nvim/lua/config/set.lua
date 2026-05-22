@@ -1,6 +1,10 @@
 vim.opt.guicursor = "" -- extra thicc cursor
 
+-- Appearance
 vim.g.have_nerd_font = true
+vim.opt_local.conceallevel = 2
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "c"
 
 -- Line numbers
 vim.wo.number = true
@@ -39,7 +43,8 @@ vim.opt.incsearch = true
 
 -- colors
 vim.opt.termguicolors = true
--- vim.o.background = "dark"
+vim.o.termguicolors = true
+vim.o.background = "dark"
 
 -- keeps 8 lines above and below cursor
 vim.opt.scrolloff = 10
@@ -59,11 +64,11 @@ vim.opt.timeoutlen = 300
 
 vim.opt.colorcolumn = "80"
 
-vim.g.netrw_liststyle = 0
+vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 
 vim.o.linebreak = true
-vim.o.formatoptions = "cjlq"
+-- vim.o.formatoptions = "cjlq"
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -109,7 +114,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- thank you (https://youtu.be/f_f08KnAJOQ?si=80GBuGrzvmsGMTqo)
---vim.opt.foldmethod = "expr"
+vim.opt.foldmethod = "marker"
 --vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 --vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
@@ -126,17 +131,16 @@ vim.api.nvim_create_user_command("FormatTable", function(opts)
 	vim.cmd(string.format('%d,%d!column -t -s "|" -o "|" ', opts.line1, opts.line2))
 end, { range = true, desc = "Format a visualy selected table" })
 
-vim.o.termguicolors = true
-vim.cmd [[
-  highlight Normal guibg=NONE ctermbg=NONE
-  highlight NonText guibg=NONE ctermbg=NONE
-  highlight EndOfBuffer guibg=NONE ctermbg=NONE
-]]
+-- vim.cmd [[
+--   highlight Normal guibg=NONE ctermbg=NONE
+--   highlight NonText guibg=NONE ctermbg=NONE
+--   highlight EndOfBuffer guibg=NONE ctermbg=NONE
+-- ]]
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "norg,typst,latex,tex",
-  callback = function()
-        vim.o.formatoptions = "cjqt"
-        vim.o.textwidth = 80
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "norg,latex,tex,typst",
+--   callback = function()
+--         vim.o.formatoptions = "cjqt"
+--         vim.o.textwidth = 80
+--   end,
+-- })

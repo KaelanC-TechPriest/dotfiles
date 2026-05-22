@@ -1,14 +1,21 @@
 return {
     {
         "EdenEast/nightfox.nvim",
+        lazy = true,
+        config = function()
+            -- vim.cmd([[colorscheme nightfox]])
+        end,
     },
     {
         "folke/tokyonight.nvim",
-        lazy = true, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
+        -- lazy = true, -- make sure we load this during startup if it is your main colorscheme
+        -- priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
+            require("tokyonight").setup({
+                style = "moon"
+            })
             -- load the colorscheme here
-            -- vim.cmd([[colorscheme tokyonight-night]])
+            vim.cmd([[colorscheme tokyonight]])
         end,
     },
     {
@@ -49,15 +56,15 @@ return {
     -- {
     --     "datsfilipe/vesper.nvim",
     -- },
-    {
-        "sainnhe/gruvbox-material",
-        lazy = true,
-        priority = 60,
-        config = function()
-            -- Optionally configure and load the colorscheme
-            -- directly inside the plugin declaration.
-            vim.g.gruvbox_material_enable_italic = true
-            vim.cmd.colorscheme("gruvbox-material")
-        end,
-    },
+    -- {
+    --     "sainnhe/gruvbox-material",
+    --     -- lazy = true,
+    --     priority = 60,
+    --     config = function()
+    --         -- Optionally configure and load the colorscheme
+    --         -- directly inside the plugin declaration.
+    --         vim.g.gruvbox_material_enable_italic = true
+    --         vim.cmd.colorscheme("gruvbox-material")
+    --     end,
+    -- },
 }

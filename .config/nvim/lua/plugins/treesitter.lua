@@ -1,40 +1,37 @@
-return { -- Highlight, edit, and navigate code
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- Sets main module to use for opts
-	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-	opts = {
-		ensure_installed = {
-			"bash",
-			"c",
-			"diff",
-			"html",
-			"lua",
-			"luadoc",
-			"markdown",
-			"query",
-			"vim",
-			"vimdoc",
-			"python",
-			"r",
-			"rnoweb",
-			"yaml",
-		},
-		-- Autoinstall languages that are not installed
-		auto_install = true,
-		highlight = {
-			enable = true,
-			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-			--  If you are experiencing weird indenting issues, add the language to
-			--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-			additional_vim_regex_highlighting = { "ruby" },
-		},
-		indent = { enable = true, disable = { "ruby" } },
-	},
-	-- There are additional nvim-treesitter modules that you can use to interact
-	-- with nvim-treesitter. You should go explore a few and see what interests you:
-	--
-	--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+return {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",  -- still the active branch (repo is archived but main works)
+    build = ":TSUpdate",
+    main = "nvim-treesitter",  -- ← CRITICAL CHANGE (was "nvim-treesitter.configs")
+    opts = {
+        -- highlight/indent are now just flags; actual enabling happens in init
+        highlight = { enable = true },
+        indent = { enable = true },
+    },
+    init = function()
+        -- Auto-install your parsers (replaces ensure_installed)
+        local ensure_installed = {
+            "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "python",
+            "query", "r", "rnoweb", "vim", "vimdoc", "yaml", "latex",
+        }
+
+        -- Only install missing ones
+        local installed = require("nvim-treesitter.config").get_installed() or {}
+        local to_install = vim.tbl_filter(function(lang)
+            return not vim.tbl_contains(installed, lang)
+        end, ensure_installed)
+
+        if #to_install > 0 then
+            require("nvim-treesitter").install(to_install)
+        end
+
+        -- Enable Treesitter on every file
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                pcall(vim.treesitter.start)  -- starts highlighting + disables vim regex
+                -- Optional: Treesitter-based indentation
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
+    end,
 }
