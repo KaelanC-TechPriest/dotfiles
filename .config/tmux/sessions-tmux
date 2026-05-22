@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/school ~/personal ~/.config ~/Documents ~/Downloads -mindepth 0 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/cubcloud ~/school ~/personal ~/.config ~/Documents ~/Downloads ~/.reminders/ -mindepth 0 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -11,21 +11,17 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    if [[ "$selected" = "$HOME/personal/notes" || "$selected" = "~/personal/notes" ]]; then
-        tmux new-session -s $selected_name -c $selected \; send-keys 'nvim -c "Neorg workspace personal"' C-m
-    else
-        tmux new-session -s $selected_name -c $selected
-    fi
-    exit 0
-elif ! tmux has-session -t="$selected_name" 2> /dev/null; then
-    if [[ "$selected" = "$HOME/personal/notes" || "$selected" = "~/personal/notes" ]]; then
-        tmux new-session -ds "$selected_name" -c "$selected" \; send-keys -t "$selected_name" 'nvim -c "Neorg workspace personal"' C-m
-    else
-        tmux new-session -ds $selected_name -c $selected \; send-keys 'hello'
-    fi
+# Create the session if it doesn't exist
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux switch-client -t "$selected_name"
+# Always enter the session
+if [[ -z "$TMUX" ]]; then
+    # Not inside tmux → attach
+    tmux attach-session -t "$selected_name"
+else
+    # Already inside tmux → switch client
+    tmux switch-client -t "$selected_name"
+fi
