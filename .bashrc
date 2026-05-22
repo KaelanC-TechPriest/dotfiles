@@ -17,35 +17,6 @@ fi
 
 # TERMINAL BEHAVIOR {{{1
 
-# TAB-COMPLETION {{{2
-
-# If there are multiple matches for completion, Tab should cycle through them
-# and Shift-Tab should cycle backwards
-
-bind 'TAB:menu-complete'
-bind '"\e[Z": menu-complete-backward'
-
-# Display a list of the matching files
-
-bind "set show-all-if-ambiguous on"
-
-# Perform partial (common) completion on the first Tab press, only start
-# cycling full results on the second Tab press (from bash version 5)
-
-bind "set menu-complete-display-prefix on"
-
-# Cycle through history based on characters already typed on the line
-
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
-
-# Keep Ctrl-Left and Ctrl-Right working when the above are used
-
-bind '"\e[1;5C":forward-word'
-bind '"\e[1;5D":backward-word'
-
-# }}}
-
 set -o vi
 
 set -o noclobber
@@ -64,6 +35,35 @@ shopt -s globstar
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+
+# TAB-COMPLETION {{{2
+
+# If there are multiple matches for completion, Tab should cycle through them
+# and Shift-Tab should cycle backwards
+
+# bind 'TAB:menu-complete'
+# bind '"\e[Z": menu-complete-backward'
+
+# Display a list of the matching files
+
+# bind "set show-all-if-ambiguous on"
+
+# Perform partial (common) completion on the first Tab press, only start
+# cycling full results on the second Tab press (from bash version 5)
+
+# bind "set menu-complete-display-prefix on"
+
+# Cycle through history based on characters already typed on the line
+
+# bind '"\e[A":history-search-backward'
+# bind '"\e[B":history-search-forward'
+
+# Keep Ctrl-Left and Ctrl-Right working when the above are used
+
+# bind '"\e[1;5C":forward-word'
+# bind '"\e[1;5D":backward-word'
+
+# }}}
 # }}}
 
 # COLOR {{{1
@@ -81,7 +81,7 @@ eval "$(starship init bash)"
 
 # ENVIRONMENT VARS {{{1
 
-XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
@@ -91,6 +91,10 @@ export CLASSPATH=$HOME/pathtojar/stdlib.jar:$CLASSPATH
 export CLASSPATH=/usr/local/bin/algs4.jar:$CLASSPATH
 export PATH=$PATH:/home/engineseer/.local/bin:/home/engineseer/go/bin
 export PATH=$PATH:/usr/local/go/bin
+
+export VISUAL=/usr/bin/nvim
+export EDITOR=/usr/bin/nvim
+export BROWSER=/usr/bin/zen-browser
 
 if [ "$color_prompt" = yes ]; then
     PS1='\[\e[1;34m\]\w\[\e[0m\]> '
@@ -126,3 +130,6 @@ HISTTIMEFORMAT='%F %T '
 # }}}
 
 # }}}
+
+# uv
+export PATH="/home/kix/.local/bin:$PATH"
