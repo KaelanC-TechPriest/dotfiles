@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/cubcloud ~/school ~/personal ~/.config ~/Documents ~/Downloads ~/.reminders/ -mindepth 0 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/work ~/school ~/personal ~/.config ~/Documents ~/Downloads ~/.reminders/ -mindepth 0 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

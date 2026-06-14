@@ -56,6 +56,8 @@ alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'
 # tmux
 alias sessions-tmux="${HOME}/.config/tmux/sessions-tmux"
 
+alias ssh="TERM=xterm-256color ssh"
+
 # work motivator
 stopwatch() {
     local rate_per_hour=15
