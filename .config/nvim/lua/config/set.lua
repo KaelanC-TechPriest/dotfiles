@@ -27,6 +27,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true -- replace tabs with spaces
 vim.opt.smartindent = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 0
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = false -- replace tabs with spaces
+-- vim.opt.smartindent = true
 
 -- wrap lines
 vim.opt.wrap = true
@@ -64,7 +69,7 @@ vim.opt.timeoutlen = 300
 
 vim.opt.colorcolumn = "80"
 
-vim.g.netrw_liststyle = 3
+vim.g.netrw_liststyle = 0
 vim.g.netrw_banner = 0
 
 vim.o.linebreak = true
@@ -90,17 +95,6 @@ vim.opt.cursorline = true
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
-
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

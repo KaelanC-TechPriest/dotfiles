@@ -38,10 +38,10 @@ vim.keymap.set("v", "<leader>d", '"_d')
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- "quick fix navigation"
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next Quick Fix" } )
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous Quick Fix" } )
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next Quick Fix" } )
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous Quick Fix" } )
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
@@ -49,12 +49,18 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- Diagnostic keymaps
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-vim.keymap.set("n", "<M-h>", "<C-w>h")
-vim.keymap.set("n", "<M-j>", "<C-w>j")
-vim.keymap.set("n", "<M-k>", "<C-w>k")
-vim.keymap.set("n", "<M-l>", "<C-w>l")
+vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Focus window left" })
+vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Focus window right" })
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Focus window down" })
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Focus window up" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

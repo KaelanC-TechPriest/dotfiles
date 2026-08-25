@@ -7,6 +7,25 @@ return {
         end,
     },
     {
+        "bjarneo/hackerman.nvim",
+        dependencies = { "bjarneo/aether.nvim" }, -- Ensure aether is loaded first
+        priority = 1000,
+        config = function()
+
+            -- set spell colors
+            require("aether").setup({
+                on_highlights = function(hl, c)
+                    hl.SpellBad   = { undercurl = true, underline = true, sp = c.error or c.red, fg = c.error or c.red }
+                    hl.SpellCap   = { undercurl = true, underline = true, sp = c.warning or c.yellow }
+                    hl.SpellLocal = { undercurl = true, underline = true, sp = c.info or c.blue }
+                    hl.SpellRare  = { undercurl = true, underline = true, sp = c.hint or c.cyan }
+                end,
+            })
+
+            vim.cmd([[colorscheme hackerman]])
+        end,
+    },
+    {
         "folke/tokyonight.nvim",
         -- lazy = true, -- make sure we load this during startup if it is your main colorscheme
         -- priority = 1000, -- make sure to load this before all the other start plugins
@@ -15,7 +34,7 @@ return {
                 style = "moon"
             })
             -- load the colorscheme here
-            vim.cmd([[colorscheme tokyonight]])
+            -- vim.cmd([[colorscheme tokyonight]])
         end,
     },
     {
