@@ -133,3 +133,11 @@ HISTTIMEFORMAT='%F %T '
 
 # uv
 export PATH="/home/kix/.local/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+[[ -r "$HOME/.grok/completions/bash/grok.bash" ]] && source "$HOME/.grok/completions/bash/grok.bash"
+# <<< grok installer <<<
+
+# Pi
+export PATH="/home/kix/.local/share/pi-node/node-v22.23.2-linux-x64/bin:$PATH"

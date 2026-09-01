@@ -55,6 +55,7 @@ alias ngs='cd ~/school/ && nvim -c "Neorg workspace school"'
 
 # tmux
 alias sessions-tmux="${HOME}/.config/tmux/sessions-tmux"
+alias tdl="${HOME}/.config/tmux/tdl"
 
 alias ssh="TERM=xterm-256color ssh"
 
