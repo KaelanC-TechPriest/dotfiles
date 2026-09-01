@@ -1,7 +1,8 @@
-@define-color foreground #eff0f1;
-@define-color foreground-inactive #7f8c8d;
-@define-color background #000000;
-@define-color background-alt #222222;
+@define-color foreground #ddf7ff;
+@define-color foreground-inactive #829dd4;
+@define-color background #0B0C16;
+@define-color background-alt #3E4058;
+@define-color music #85E1FB;
 
 * {
     font-family: JetBrainsMonoNerdFont, FontAwesome;
@@ -28,6 +29,10 @@
 #workspaces button.active {
     background-color: @background-alt;
     border-radius: 0px;
+}
+
+#mpris {
+    color: @music;
 }
 
 #battery,

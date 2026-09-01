@@ -35,8 +35,8 @@
     },
 
     "mpris": {
-        "format": "{player_icon} {title} - {artist}",
-        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+        "format": "<span color='#7cf8f7'>{player_icon} {title} - {artist}</span>",
+        "format-paused": "<span color='#6a6e95'>{status_icon} <i>{title} - {artist}</i></span>",
         "max-length": 40,
         "player-icons": {
             "default": "▶",
