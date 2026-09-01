@@ -15,6 +15,14 @@ return {
                 name = "personal",
                 path = "~/personal/notes",
             },
+            {
+                name = "poster",
+                path = "~/work/johnson-lab/poster-session",
+            },
+            {
+                name = "school",
+                path = "~/school",
+            },
         },
     },
     keys = {
