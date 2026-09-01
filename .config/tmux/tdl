@@ -1,0 +1,36 @@
+#!/bin/bash
+
+tdl() {
+    [[ -z $TMUX ]] && { echo "You must start tmux to use tdl."; return 1; }
+
+    local current_dir="${PWD}"
+    local editor_pane ai_pane ai2_pane
+
+    # Use TMUX_PANE for the pane we're running in (stable even if active window changes)
+    editor_pane="$TMUX_PANE"
+
+    # Name the current window after the base directory name
+    tmux rename-window -t "$editor_pane" "$(basename "$current_dir")"
+
+    # Split window vertically - top 85%, bottom 15% (target editor pane explicitly)
+    tmux split-window -v -p 15 -t "$editor_pane" -c "$current_dir"
+
+    # Split editor pane horizontally - AI on right 30% (capture new pane ID directly)
+    ai_pane=$(tmux split-window -h -p 30 -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+    sleep 0.2
+    # Run ai in the right pane
+    if [[ -n $1 ]]; then
+        tmux send-keys -t "$ai_pane" "$1" C-m
+    else
+        tmux send-keys -t "$ai_pane" "opencode" C-m
+    fi
+
+    # Run nvim in the left pane
+    tmux send-keys -t "$editor_pane" "$EDITOR ." C-m
+
+    # Select the nvim pane for focus
+    tmux select-pane -t "$editor_pane"
+}
+
+tdl "$@"
